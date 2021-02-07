@@ -1,6 +1,7 @@
-
 // Assignment Code
+
 var generateBtn = document.querySelector("#generate");
+
 
 // Write password to the #password input
 function writePassword() {
@@ -10,22 +11,43 @@ function writePassword() {
 
   passwordText.value = password;
 
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+
+// Length (8 char. min.), lowercase, uppercase, numveric, and/or special characters
+
+function generatePassword() {
+
   // establish undefined variables for password conditions
-  // local to function writePassword
-  // will use later as conditions for randomizing password
-  var isLower = undefined;
+// local to function writePassword
+// will use later as conditions for randomizing password
 
-  var passLength = undefined;
+  var passLength;
 
-  var isUppercase = undefined;
+  var isLower;
 
-  var isContainNumber = undefined;
+  var isUppercase;
 
-  var isSpecial = undefined;
+  var isContainNumber;
 
-  // Length (8 char. min.), lowercase, uppercase, numveric, and/or special characters
+  var isSpecial;
 
-  function generatePassword() {
+  var fullArray = [];
+
+  var uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+  var lowerChars = "abcdefghijklmnopqrstuvwxyz";
+
+  var numbers = "0123456789";
+
+  var specialChars = "!#%$%&'()*+,-./:;<=>?@[\]^+`[]|~";
+
+  var characterContainer = [];
+
     // Ask questions to collect password information to use
 
     // Ask for user password length(must be between 8-128 characters)
@@ -35,10 +57,10 @@ function writePassword() {
     while (true) {
 
       if (passLength < 8 || passLength > 128) {
-        alert("Password must be between 8 & 128 characters only.");
-        passLength = prompt("Enter another number.");
+        // alert("Password must be between 8 & 128 characters only.");
+        passLength = prompt("Password must be between 8-128 characters");
       }else if (passLength >= 8 && passLength <= 128) {
-        alert("Cool you got the right length.");
+        // alert("Cool you got the right length.");
         break;
       };
 
@@ -47,55 +69,64 @@ function writePassword() {
     // Ask if user wants lowercase letters
     isLower = confirm("Would you like any lowercase characters?");
 
-    if (isLower) {
-      alert("lowercase it is");
-    }else {
-      alert("no lowercase then..");
-    };
-
     // Ask if user wants UPPERCASE letters
     isUppercase = confirm("Would you like any uppercase characters?");
-
-    if (isLower) {
-      alert("uppercase it is");
-    }else {
-      alert("no uppercase then..");
-    };
 
     // Ask if user wants numbers
     isContainNumber = confirm("Would you like any numbers?")
 
-    if (isContainNumber) {
-      alert("you get numbers!");
-    } else {
-      alert("fine, no numbers...");
-    };
-
     // Ask if user wants special characters
     isSpecial = confirm("Would you like any special characters?")
 
-    if (isSpecial) {
-      alert("you get special characters!");
-    } else {
-      alert("fine, no special characters...");
+
+    var test = fullArray;
+
+
+    // Conditional statements based on client input
+    // Pushes the list of acceptable characters to a new array if true
+    if (isLower) {
+      test = fullArray.push(lowerChars)
     };
 
-    console.log("Length: " + passLength);
-    console.log("Lowercase: " + isLower);
-    console.log("Uppercase: " + isUppercase);
-    console.log("Numbers: " + isContainNumber);
-    console.log("Special Characters: " + isSpecial);
+    if (isUppercase) {
+      test = fullArray.push(uppers);
+    };
 
-    return passLength;
-    
-  }
 
+    if (isContainNumber) {
+      test = fullArray.push(numbers)
+    };
+
+    if (isSpecial) {
+      test = fullArray.push(specialChars)
+    };
+
+
+    // Turn the list of acceptable characters into a string
+    var joinedString = fullArray.join("");
+
+    // establish variable for random characters
+    var newPass = '';
+
+    var randomCharacter
+    // FOR loop to 
+    // 1. get random index  
+    // 2. use that index to pull a random character
+    // 3. add the selected character to an empty array
+    for (var i=0; i < passLength; i++) {
+      var randomIndex = Math.floor(Math.random() * joinedString.length);
+      randomCharacter = joinedString[randomIndex];
+      characterContainer.push(randomCharacter);
+    }
+
+    var yourNewPass = characterContainer.join("");
+
+    return yourNewPass;
+
+    // var yourNewPass = newPassArray.join("");
+
+    // console.log(yourNewPass);
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-
 
 
 
