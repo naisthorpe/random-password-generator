@@ -16,14 +16,11 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
-
-// Length (8 char. min.), lowercase, uppercase, numveric, and/or special characters
+// Length (8 char. min.), lowercase, uppercase, numeric, and/or special characters
 
 function generatePassword() {
 
-  // establish undefined variables for password conditions
-// local to function writePassword
+// establish undefined variables for password conditions
 // will use later as conditions for randomizing password
 
   var passLength;
@@ -57,10 +54,8 @@ function generatePassword() {
     while (true) {
 
       if (passLength < 8 || passLength > 128) {
-        // alert("Password must be between 8 & 128 characters only.");
         passLength = prompt("Password must be between 8-128 characters");
       }else if (passLength >= 8 && passLength <= 128) {
-        // alert("Cool you got the right length.");
         break;
       };
 
@@ -79,53 +74,46 @@ function generatePassword() {
     isSpecial = confirm("Would you like any special characters?")
 
 
-    var test = fullArray;
-
-
     // Conditional statements based on client input
     // Pushes the list of acceptable characters to a new array if true
     if (isLower) {
-      test = fullArray.push(lowerChars)
+      fullArray.push(lowerChars)
     };
 
     if (isUppercase) {
-      test = fullArray.push(uppers);
+      fullArray.push(uppers);
     };
 
 
     if (isContainNumber) {
-      test = fullArray.push(numbers)
+      fullArray.push(numbers)
     };
 
     if (isSpecial) {
-      test = fullArray.push(specialChars)
+      fullArray.push(specialChars)
     };
 
 
-    // Turn the list of acceptable characters into a string
+    // Join the array of strings into one string
     var joinedString = fullArray.join("");
 
-    // establish variable for random characters
-    var newPass = '';
 
-    var randomCharacter
     // FOR loop to 
     // 1. get random index  
-    // 2. use that index to pull a random character
+    // 2. use that index to pull a random character from the joined string
     // 3. add the selected character to an empty array
     for (var i=0; i < passLength; i++) {
       var randomIndex = Math.floor(Math.random() * joinedString.length);
-      randomCharacter = joinedString[randomIndex];
+      var randomCharacter = joinedString[randomIndex];
       characterContainer.push(randomCharacter);
     }
 
+    // new variable that joins the array of characters into one string
     var yourNewPass = characterContainer.join("");
 
+    // return the string
     return yourNewPass;
 
-    // var yourNewPass = newPassArray.join("");
-
-    // console.log(yourNewPass);
 }
 
 
