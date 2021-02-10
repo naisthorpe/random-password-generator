@@ -27,4 +27,4 @@ https://naisthorpe.github.io/aisthorpe-portfolio/
 ------
 ## Site Image
 
-![Screenshot of site](assets\images\random-password-site-screenshot.png)
+![Screenshot of site](assets/images/random-password-site-screenshot.png)
