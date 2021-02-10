@@ -22,7 +22,7 @@ Using that input, I created conditional statements to push strings of acceptable
 
 ## Site Link
 
-https://naisthorpe.github.io/aisthorpe-portfolio/
+https://naisthorpe.github.io/random-password-generator/
 
 ------
 ## Site Image
