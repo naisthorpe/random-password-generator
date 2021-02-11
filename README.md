@@ -8,7 +8,7 @@ This is a random password generator that uses JavaScript for its functionality.
 
 ## Why
 
-This was a homework assignment for Week 3 of my 
+This was a homework assignment for Week 3 of UNCC's full stack web development course.
 
 -----
 
